@@ -1,0 +1,102 @@
+<!-- 
+1. Функции для работы с массивами
+a. Написать функцию, которая принимает в качестве параметра число n. 
+	Результатом работы функции является массив из N элементов со значениями 1, 2, 3… n.
+b. Написать функцию, которая принимает массив чисел. 
+	Результатом работы функции является сумма чисел этого массива.
+c. Написать функцию, которая на вход получает массив целых чисел, 
+	и в качестве результата возвращает максимальное число.
+d. Написать функцию, которая на вход получает массив целых чисел, 
+	и в качестве результата возвращает минимальное число.
+f. Написать функцию, которая на вход получает массив целых чисел, 
+	и в качестве результата возвращает только четные числа из этого массива. 
+	Чтобы определить четность числа, воспользуйтесь оператором для подсчета остатка 
+	от деления: x % 2. Если остаток от деления числа на 2 равен 0, число будет четное.  
+-->
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	function getSequenceArray(n) { // Задание 1.a.
+		var a = [];
+		for (var i = 1; i <= n; i++) {
+			a.push(i);
+		}
+		return a;
+	}
+
+	function getRandomNumber(max) { 
+		return parseInt(Math.random() * max);
+	}
+
+	function getRandomArray(n) { // Генерация массива со случ. числами для проверки дз
+		var a = [];
+		for (var i = 1; i <= n; i++) {
+			a.push(getRandomNumber(100));
+		}
+		return a;
+	}
+
+	function getSummFromArray(arr) { // Задание 1.b.
+		var summ = 0;
+		for (var i = 0; i < arr.length; i++) {
+			summ += arr[i];
+		}
+		return summ;
+	}
+
+	function getMaxFromArray(arr) { // Задание 1.c.
+		var max = arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			if (max < arr[i]) {
+				max = arr[i];
+			}
+		}
+		return max;
+	}
+
+	function getMinFromArray(arr) { // Задание 1.d.
+		var min = arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			if (min > arr[i]) {
+				min = arr[i];
+			}
+		}
+		return min;
+	}
+
+	function getEvenArray(arr) { // Задание 1.f.
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] % 2 != 0) {
+				arr.splice(i, 1);
+				i--; //если этого не сделать, то мы пропустим i + 1-й элемент и не проверим его. Т.к. Массив сдвинется после удаления элемента
+			}
+		}
+		return arr;
+	}
+
+
+// Задание 1.a.	
+	var n = +prompt("Введите число n, для генерации массива от 1 до n.");
+	var numbers = getSequenceArray(n);
+	alert("Массив будет иметь следующий вид: \n" + numbers);
+
+// Задание 1.b.
+	var n = +prompt("Введите длину массива n, для генерации массива случайных чисел.");
+	numbers = getRandomArray(n);
+	alert("Массив будет иметь следующий вид: \n" + numbers);
+	alert("Сумма всех элементов массива: \n" + getSummFromArray(numbers));
+
+// Задание 1.c.	
+	alert("Значение максимального элемента массива: \n" + getMaxFromArray(numbers));
+
+// Задание 1.d.	
+	alert("Значение минимального элемента массива: \n" + getMinFromArray(numbers));
+	
+// Задание 1.f.	
+	alert("В массиве остались только четные элементы: \n" + getEvenArray(numbers));
+	alert("Программа завершена.");
+
+</script>
+
+

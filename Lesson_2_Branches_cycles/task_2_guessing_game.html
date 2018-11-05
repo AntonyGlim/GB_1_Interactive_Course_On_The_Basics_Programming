@@ -1,0 +1,46 @@
+<!-- ПК загадывает число 0 - 100. Попыток 7. ПК подсказывает больше это, или меньше число.
+
+	3. Дописать игру “Угадай число” (по желанию).
+	Сделать игру с двумя игроками и бесконечным числом попыток. Сделайте возможность выйти из игры по желанию одного из игроков.
+ -->
+<meta charset="utf-8">
+<script type="text/javascript">
+
+	alert("Поиграем в угадайку?");
+	var answer = parseInt(Math.random() * 100) //Хранит правильный ответ, сгенерированный случайно, от 0 до 1, * на 100 и отпросим дробную часть parseInt
+	var userNumber = 1; //Номер игрока (1 или 2)
+	
+	var wontToExite = "НЕТ"; //Хочет-ли пользователь выйти из игры
+
+	while (true){
+	
+		var userAnswer = prompt(userNumber + " Игрок, введите число от 0 до 100. \nДля выхода нажмите 'q'");
+
+		if (userAnswer.toUpperCase() == "Q") 
+			break
+
+		userAnswer = parseInt(userAnswer);
+
+		if (userAnswer == answer) {
+			alert("Пздравляем! Игрок " + userNumber + " Вы выиграли!");
+			break; 	// Выход из цикла
+		} else if (userAnswer > answer) {
+			alert("Ваше число больше чем загаданное");
+		} else if (userAnswer < answer) {
+			alert("Ваше число меньше чем загаданное");
+		}
+
+			if (userNumber == 1) { //Изменяем номер игрока от 1 до 2
+				userNumber++;
+			} else {
+				userNumber--;
+			}
+
+		}
+
+
+	alert("Правильный ответ: " + answer + "!");
+	
+
+</script>
+

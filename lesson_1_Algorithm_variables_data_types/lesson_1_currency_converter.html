@@ -1,0 +1,24 @@
+<!-- Программа запрашивает у пользователя какую сумму в рублях он бы хотел конвертировать в доллары и евро, 
+	после чего выводит на экран сконвертированные значения в долларах и в евро
+	с рекомендациями от GB-->
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	var euroRate = 77.3832; 	//Стоимость 1 евро в рублях
+	var dollarRate = 65.8244; 	//Стоимость 1 доллара в рублях
+	//Источник https://finance.rambler.ru/currencies
+
+	var amountInRubles = prompt("Какую сумму вам необходимо сконвертировать? Введите целое значение в рублях.");
+
+	amountInRubles = parseInt(amountInRubles); //Изменение типа из строкового в числовой
+
+	var amountInEuros = amountInRubles / euroRate;
+	var amountInDollars = amountInRubles / dollarRate;
+	
+	// alert("Сумма в долларах: " + amountInDollars + " " + "$"); 		// Выведет числа без скруглений с большим количеством знаков псле запятой
+	// alert("Сумма в евро: " + amountInEuros + " " + "€"); 			// Выведет числа без скруглений с большим количеством знаков псле запятой
+
+	alert("Сумма в долларах: " + amountInDollars.toFixed(4) + " " + "$ \n" + "Сумма в евро: " + amountInEuros.toFixed(4) + " " + "€"); 	// Выведет числа со скруглением с 4 знаками псле запятой
+
+</script>
